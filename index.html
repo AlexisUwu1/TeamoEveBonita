@@ -4,56 +4,136 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080d20">
 <title>Una carta para ti ♡</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap');
 
 :root {
-    --bg: #f7f3ee;
-    --card: #fffdf9;
-    --text: #59483f;
-    --muted: #88766b;
-    --rose: #b9827d;
+    --night: #080d20;
+    --night2: #111b36;
+    --text: #f5f2ed;
+    --muted: #aab2ca;
+    --rose: #c49baf;
+    --cream: #f7f2e9;
+    --ink: #59483f;
     --border: #e9ddd5;
 }
 
-* { box-sizing: border-box; }
+* {
+    box-sizing: border-box;
+}
 
-html { scroll-behavior: smooth; }
+html {
+    scroll-behavior: smooth;
+}
 
 body {
     margin: 0;
-    padding: 25px 15px;
-    background: var(--bg);
+    padding: 0 15px;
+    background:
+        radial-gradient(ellipse at 50% 0%, #1d2b50 0%, transparent 55%),
+        linear-gradient(180deg, var(--night), var(--night2), var(--night));
     color: var(--text);
     font-family: 'DM Sans', sans-serif;
+    overflow-x: hidden;
 }
 
+/* ESTRELLAS */
+
+#stars {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    border-radius: 50%;
+    background: white;
+    opacity: .5;
+    animation: twinkle 3s infinite ease-in-out;
+}
+
+@keyframes twinkle {
+    0%, 100% {
+        opacity: .2;
+        transform: scale(.8);
+    }
+    50% {
+        opacity: .95;
+        transform: scale(1.6);
+    }
+}
+
+/* LUNA */
+
+.moon {
+    position: fixed;
+    top: 75px;
+    right: 12%;
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    box-shadow: -13px 8px 0 0 #e9dfce;
+    opacity: .8;
+    transform: rotate(-25deg);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* CONTENEDOR */
+
 .container {
+    position: relative;
+    z-index: 1;
     width: 100%;
     max-width: 780px;
     margin: auto;
 }
 
+/* ENCABEZADO */
+
 header {
     text-align: center;
-    padding: 65px 15px 45px;
+    padding: 95px 15px 65px;
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .heart {
     color: var(--rose);
-    font-size: 30px;
+    font-size: 32px;
+    animation: heartbeat 2s infinite;
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.13); }
 }
 
 h1, h2 {
     font-family: 'Playfair Display', serif;
-    font-weight: 500;
+    font-weight: 400;
 }
 
 h1 {
-    font-size: clamp(38px, 7vw, 62px);
-    margin: 15px 0;
+    font-size: clamp(42px, 8vw, 70px);
+    margin: 20px 0;
+    line-height: 1.2;
+}
+
+h1 span {
+    color: #c8abc0;
+    font-style: italic;
 }
 
 .subtitle {
@@ -61,6 +141,7 @@ h1 {
     max-width: 540px;
     margin: auto;
     line-height: 1.9;
+    font-size: 15px;
 }
 
 .divider {
@@ -70,43 +151,59 @@ h1 {
     margin: 30px auto;
 }
 
-.section {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    padding: 28px;
-    margin: 20px 0;
-    box-shadow: 0 8px 25px #57433808;
-}
-
-.section h2 {
-    font-size: 25px;
-    margin: 0 0 12px;
-}
-
 .description {
     color: var(--muted);
     font-size: 14px;
-    line-height: 1.8;
+    line-height: 1.9;
 }
 
-.center { text-align: center; }
+.scroll-hint {
+    position: absolute;
+    bottom: 28px;
+    color: #8790ac;
+    font-size: 11px;
+    letter-spacing: 3px;
+}
+
+/* SECCIONES */
+
+.section {
+    background: #ffffff09;
+    border: 1px solid #ffffff1c;
+    border-radius: 20px;
+    padding: 30px;
+    margin: 30px 0;
+    box-shadow: 0 10px 35px #00000015;
+    backdrop-filter: blur(8px);
+}
+
+.section h2 {
+    font-size: 29px;
+    margin: 0 0 12px;
+    color: #f4e9e9;
+}
+
+.center {
+    text-align: center;
+}
+
+/* BOTONES */
 
 button {
-    border: none;
-    background: var(--rose);
+    border: 1px solid #c4b4c4;
+    background: #ffffff0d;
     color: white;
     border-radius: 30px;
-    padding: 15px 25px;
+    padding: 14px 25px;
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 500;
     cursor: pointer;
-    transition: .2s;
+    transition: .3s;
 }
 
 button:hover {
-    background: #a56f69;
-    transform: translateY(-2px);
+    background: #ffffff20;
+    transform: translateY(-3px);
 }
 
 button:focus-visible {
@@ -114,164 +211,332 @@ button:focus-visible {
     outline-offset: 4px;
 }
 
+/* GALERÍA POLAROID */
+
 .gallery {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 13px;
-    margin-top: 22px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 30px 22px;
+    margin-top: 30px;
 }
 
-.gallery img {
+.polaroid {
+    background: #f8f5ee;
+    padding: 9px 9px 17px;
+    box-shadow: 0 12px 30px #00000055;
+    transform: rotate(-2deg);
+    transition: .35s;
+}
+
+.polaroid:nth-child(even) {
+    transform: rotate(2deg);
+}
+
+.polaroid:hover {
+    transform: rotate(0deg) translateY(-7px);
+}
+
+.polaroid img {
     width: 100%;
     height: 230px;
+    display: block;
     object-fit: cover;
-    border-radius: 14px;
-    background: #eee5dc;
-    border: 1px solid var(--border);
+    background: #ded6ce;
 }
 
 .photo-caption {
-    color: var(--muted);
-    font-size: 13px;
+    color: #59483f;
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
     text-align: center;
-    margin-top: 15px;
+    margin: 14px 2px 0;
 }
+
+/* MÚSICA */
 
 .music {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 15px;
-    background: #f7efeb;
+    background: #ffffff0c;
+    border: 1px solid #ffffff18;
     border-radius: 15px;
-    padding: 17px;
-    margin-top: 20px;
+    padding: 19px;
+    margin-top: 25px;
 }
 
 .music-info {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 6px;
+}
+
+.music-info strong {
+    font-family: 'Playfair Display', serif;
+    font-size: 19px;
+    font-weight: 400;
 }
 
 .music-info small {
     color: var(--muted);
+    font-size: 12px;
 }
 
 .music button {
-    padding: 11px 18px;
+    padding: 11px 19px;
     flex-shrink: 0;
 }
 
+/* CARTA */
+
 .letter {
     display: none;
-    animation: appear .8s ease;
+    background: var(--cream);
+    border: none;
+    color: var(--ink);
+    padding: clamp(23px, 6vw, 50px);
+    animation: appear .9s ease;
+    scroll-margin-top: 20px;
 }
 
 @keyframes appear {
-    from { opacity: 0; transform: translateY(15px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.letter h2 {
+    color: #725c53;
+}
+
+.letter .heart {
+    color: #b9827d;
+}
+
+.letter .divider {
+    background: #b9827d;
 }
 
 .letter-content {
-    color: var(--text);
+    color: #59483f;
     font-size: 15px;
     line-height: 2;
+    overflow-wrap: anywhere;
 }
 
 .letter-content p {
-    margin: 0 0 20px;
+    margin: 0 0 22px;
+}
+
+.letter-content p:first-child::first-letter {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    float: left;
+    line-height: 1;
+    padding-right: 7px;
+    color: #b9827d;
 }
 
 .signature {
     text-align: center;
     font-family: 'Playfair Display', serif;
     font-size: 29px;
-    color: var(--rose);
+    color: #b9827d;
     font-style: italic;
     margin-top: 35px;
 }
 
+/* CIERRE */
+
 .final {
     text-align: center;
-    padding: 55px 20px;
+    padding: 95px 20px 110px;
 }
 
 .final h2 {
-    font-size: 32px;
+    font-size: clamp(32px, 6vw, 47px);
+    color: #f3e8ed;
 }
 
 .final p {
     color: var(--muted);
-    line-height: 1.9;
+    line-height: 2;
+    max-width: 550px;
+    margin: 20px auto;
+}
+
+.final-photo {
+    display: block;
+    width: min(100%, 400px);
+    height: 260px;
+    object-fit: cover;
+    margin: 35px auto;
+    padding: 9px 9px 25px;
+    background: #f8f5ee;
+    box-shadow: 0 15px 40px #00000055;
+    transform: rotate(-2deg);
+}
+
+.final .heart {
+    margin-top: 30px;
 }
 
 footer {
     text-align: center;
-    color: #a8958c;
+    color: #818aa5;
     font-size: 12px;
-    padding: 25px 10px;
+    padding: 25px 10px 40px;
 }
 
+/* MÓVIL */
+
 @media(max-width: 500px) {
-    body { padding: 12px; }
-    .section { padding: 20px; }
-    .gallery img { height: 165px; }
-    .music { align-items: flex-start; flex-direction: column; }
+    body {
+        padding: 0 10px;
+    }
+
+    header {
+        padding: 75px 10px 60px;
+    }
+
+    .section {
+        padding: 21px;
+        margin: 20px 0;
+    }
+
+    .gallery {
+        gap: 19px 13px;
+    }
+
+    .polaroid {
+        padding: 7px 7px 13px;
+    }
+
+    .polaroid img {
+        height: 165px;
+    }
+
+    .photo-caption {
+        font-size: 12px;
+    }
+
+    .music {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .letter-content {
+        font-size: 14px;
+    }
+
+    .moon {
+        width: 45px;
+        height: 45px;
+        top: 35px;
+    }
+}
+
+@media(prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: .01ms !important;
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+    }
 }
 </style>
 </head>
 
 <body>
 
+<div id="stars"></div>
+<div class="moon"></div>
+
 <div class="container">
 
+<!-- PORTADA -->
+
 <header>
+
     <div class="heart">♡</div>
 
-    <h1>Te Amoooooooooo</h1>
+    <h1>Te Amo<span>ooooooooo</span></h1>
 
     <p class="subtitle">
-        No sé exactamente cómo empezar ni cómo decir todo lo que siento 
-        pero solo quiero que sepas lo mucho que eres para mi  
+        No sé exactamente cómo empezar ni cómo decir todo lo que siento
+        pero solo quiero que sepas lo mucho que eres para mí.
     </p>
 
     <div class="divider"></div>
 
     <p class="description">Para Eve, con todo mi amor.</p>
+
+    <div class="scroll-hint">DESLIZA PARA CONTINUAR ↓</div>
+
 </header>
 
 <!-- NUESTRAS FOTOGRAFÍAS -->
 
 <section class="section">
+
     <div class="center">
         <h2>Nosotros</h2>
+
         <p class="description">
-            Te juro que podremos vivir estos y muchos mas monentos tan lindos juntos
+            Te juro que podremos vivir estos y muchos más
+            momentos tan lindos juntos.
         </p>
     </div>
 
     <div class="gallery">
-        <img src="foto1.jpg" alt="Un recuerdo juntos">
-        <img src="foto2.jpg" alt="Un recuerdo juntos">
-        <img src="foto3.jpg" alt="Un recuerdo juntos">
-        <img src="foto4.jpg" alt="Un recuerdo juntos">
+
+        <div class="polaroid">
+            <img src="foto1.jpg" alt="Un recuerdo juntos">
+            <p class="photo-caption"></p>
+        </div>
+
+        <div class="polaroid">
+            <img src="foto2.jpg" alt="Un recuerdo juntos">
+            <p class="photo-caption"></p>
+        </div>
+
+        <div class="polaroid">
+            <img src="foto3.jpg" alt="Un recuerdo juntos">
+            <p class="photo-caption"></p>
+        </div>
+
+        <div class="polaroid">
+            <img src="foto4.jpg" alt="Un recuerdo juntos">
+            <p class="photo-caption"></p>
+        </div>
+
     </div>
 
-    <p class="photo-caption">
-        Si pudiera volver a vivir estos momentos, volvería a elegirte. ♡
+    <p class="description center" style="margin-top:25px;">
+        Si pudiera volver a vivir estos momentos,
+        volvería a elegirte. ♡
     </p>
+
 </section>
 
 <!-- MÚSICA -->
 
 <section class="section">
+
     <div class="center">
-        <h2>Nuestra Cancion</h2>
-      
+        <h2>Nuestra Canción</h2>
+        <p class="description">
+           
+        </p>
     </div>
 
     <div class="music">
+
         <div class="music-info">
             <strong>♫ Arrullo de Estrellas</strong>
           
@@ -280,14 +545,17 @@ footer {
         <button id="musicButton" onclick="reproducirMusica()">
             ▶ Reproducir
         </button>
+
     </div>
 
-    <audio id="musica" src="cancion.mp3" loop preload="auto"></audio>
+    <audio id="musica" src="cancion.mp3" loop preload="metadata"></audio>
+
 </section>
 
 <!-- ABRIR CARTA -->
 
 <section class="section center" id="inicioCarta">
+
     <div class="heart">♡</div>
 
     <h2>Hay algo que necesito decirte</h2>
@@ -300,28 +568,35 @@ footer {
     <button onclick="abrirCarta()">
         Leer ♡
     </button>
+
 </section>
 
 <!-- CARTA COMPLETA -->
 
 <section class="section letter" id="carta">
+
     <div class="center">
+
         <div class="heart">♡</div>
-        <h2>Desde el fondo de mi corazon </h2>
-        
+
+        <h2>Desde el fondo de mi corazón</h2>
+
         <div class="divider"></div>
+
     </div>
 
     <div class="letter-content" id="textoCarta"></div>
 
     <div class="signature">
-        Te amo, Eve Bonita  ♡
+        Te amo, Eve Bonita ♡
     </div>
+
 </section>
 
 <!-- CIERRE -->
 
 <section class="final">
+
     <div class="heart">♡</div>
 
     <h2>Quiero seguir eligiéndote.</h2>
@@ -330,20 +605,29 @@ footer {
         No puedo cambiar lo que pasó, pero sí puedo hacerme
         responsable de mis acciones y trabajar cada día
         para ser una mejor persona.
-
-
-        PD: Se siente tan lindo hacer todo esto por ti jjjjj
     </p>
 
+    <img class="final-photo"
+         src="foto1.jpg"
+         alt="Un recuerdo especial de nosotros">
 
-   
+    <p>
+        PD: Se siente tan lindo hacer todo esto por ti jjjjj.
+    </p>
+
+    <div class="heart">♡</div>
+
 </section>
 
-
+<footer>
+  
+    <br><br>
+    Con todo mi corazón ♡
+</footer>
 
 </div>
 
-<!-- TEXTO ORIGINAL DE LA CARTA -->
+
 
 <textarea id="textoOriginal" hidden>
 Hola, no sé cómo empezar, pero todo lo diré desde mi corazón y llorando.
@@ -394,37 +678,78 @@ Y te pido desde mi alma, desde mi ser y desde todo lo que significa existir y se
 </textarea>
 
 <script>
+
+// CREAR ESTRELLAS
+
+const stars = document.getElementById("stars");
+
+for (let i = 0; i < 130; i++) {
+
+    const star = document.createElement("div");
+    star.className = "star";
+
+    star.style.left = Math.random() * 100 + "%";
+    star.style.top = Math.random() * 100 + "%";
+    star.style.animationDelay = Math.random() * 4 + "s";
+    star.style.animationDuration = (2 + Math.random() * 4) + "s";
+
+    stars.appendChild(star);
+}
+
+// REPRODUCTOR
+
 function reproducirMusica() {
+
     const audio = document.getElementById("musica");
     const boton = document.getElementById("musicButton");
 
     if (audio.paused) {
+
         audio.play().then(() => {
             boton.textContent = "Ⅱ Pausar";
         }).catch(() => {
             alert("No se pudo reproducir. Revisa que cancion.mp3 esté en la carpeta correcta.");
         });
+
     } else {
+
         audio.pause();
         boton.textContent = "▶ Reproducir";
+
     }
 }
 
+document.getElementById("musica").addEventListener("pause", () => {
+    document.getElementById("musicButton").textContent = "▶ Reproducir";
+});
+
+document.getElementById("musica").addEventListener("play", () => {
+    document.getElementById("musicButton").textContent = "Ⅱ Pausar";
+});
+
+// ABRIR CARTA
+
 function abrirCarta() {
+
     const carta = document.getElementById("carta");
+
     const original = document.getElementById("textoOriginal").value.trim();
 
     const parrafos = original.split(/\n\s*\n/);
+
     const contenido = document.getElementById("textoCarta");
 
     contenido.replaceChildren();
 
     parrafos.forEach(texto => {
+
         if (!texto.trim()) return;
 
         const p = document.createElement("p");
         p.textContent = texto.trim();
+
         contenido.appendChild(p);
+
     });
 
     carta.style.display = "block";
@@ -434,16 +759,20 @@ function abrirCarta() {
         block: "start"
     });
 
+    // Intentar iniciar la canción al abrir la carta.
+    // Si el navegador lo permite, comenzará automáticamente.
+
     const audio = document.getElementById("musica");
 
     if (audio.paused) {
-        audio.play().then(() => {
-            document.getElementById("musicButton").textContent = "Ⅱ Pausar";
-        }).catch(() => {
-            // Si el navegador bloquea el audio, puede iniciarse con el botón.
+
+        audio.play().catch(() => {
+            // Puede utilizarse el botón de reproducción manual.
         });
+
     }
 }
+
 </script>
 
 </body>
