@@ -1,0 +1,450 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Una carta para ti ♡</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600;700&display=swap');
+
+:root {
+    --bg: #f7f3ee;
+    --card: #fffdf9;
+    --text: #59483f;
+    --muted: #88766b;
+    --rose: #b9827d;
+    --border: #e9ddd5;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+    margin: 0;
+    padding: 25px 15px;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+}
+
+.container {
+    width: 100%;
+    max-width: 780px;
+    margin: auto;
+}
+
+header {
+    text-align: center;
+    padding: 65px 15px 45px;
+}
+
+.heart {
+    color: var(--rose);
+    font-size: 30px;
+}
+
+h1, h2 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 500;
+}
+
+h1 {
+    font-size: clamp(38px, 7vw, 62px);
+    margin: 15px 0;
+}
+
+.subtitle {
+    color: var(--muted);
+    max-width: 540px;
+    margin: auto;
+    line-height: 1.9;
+}
+
+.divider {
+    width: 75px;
+    height: 1px;
+    background: var(--rose);
+    margin: 30px auto;
+}
+
+.section {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 28px;
+    margin: 20px 0;
+    box-shadow: 0 8px 25px #57433808;
+}
+
+.section h2 {
+    font-size: 25px;
+    margin: 0 0 12px;
+}
+
+.description {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.center { text-align: center; }
+
+button {
+    border: none;
+    background: var(--rose);
+    color: white;
+    border-radius: 30px;
+    padding: 15px 25px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .2s;
+}
+
+button:hover {
+    background: #a56f69;
+    transform: translateY(-2px);
+}
+
+button:focus-visible {
+    outline: 3px solid #d7aaa3;
+    outline-offset: 4px;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 13px;
+    margin-top: 22px;
+}
+
+.gallery img {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+    border-radius: 14px;
+    background: #eee5dc;
+    border: 1px solid var(--border);
+}
+
+.photo-caption {
+    color: var(--muted);
+    font-size: 13px;
+    text-align: center;
+    margin-top: 15px;
+}
+
+.music {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    background: #f7efeb;
+    border-radius: 15px;
+    padding: 17px;
+    margin-top: 20px;
+}
+
+.music-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.music-info small {
+    color: var(--muted);
+}
+
+.music button {
+    padding: 11px 18px;
+    flex-shrink: 0;
+}
+
+.letter {
+    display: none;
+    animation: appear .8s ease;
+}
+
+@keyframes appear {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.letter-content {
+    color: var(--text);
+    font-size: 15px;
+    line-height: 2;
+}
+
+.letter-content p {
+    margin: 0 0 20px;
+}
+
+.signature {
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 29px;
+    color: var(--rose);
+    font-style: italic;
+    margin-top: 35px;
+}
+
+.final {
+    text-align: center;
+    padding: 55px 20px;
+}
+
+.final h2 {
+    font-size: 32px;
+}
+
+.final p {
+    color: var(--muted);
+    line-height: 1.9;
+}
+
+footer {
+    text-align: center;
+    color: #a8958c;
+    font-size: 12px;
+    padding: 25px 10px;
+}
+
+@media(max-width: 500px) {
+    body { padding: 12px; }
+    .section { padding: 20px; }
+    .gallery img { height: 165px; }
+    .music { align-items: flex-start; flex-direction: column; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<header>
+    <div class="heart">♡</div>
+
+    <h1>Te Amoooooooooo</h1>
+
+    <p class="subtitle">
+        No sé exactamente cómo empezar ni cómo decir todo lo que siento 
+        pero solo quiero que sepas lo mucho que eres para mi  
+    </p>
+
+    <div class="divider"></div>
+
+    <p class="description">Para Eve, con todo mi amor.</p>
+</header>
+
+<!-- NUESTRAS FOTOGRAFÍAS -->
+
+<section class="section">
+    <div class="center">
+        <h2>Nosotros</h2>
+        <p class="description">
+            Te juro que podremos vivir estos y muchos mas monentos tan lindos juntos
+        </p>
+    </div>
+
+    <div class="gallery">
+        <img src="foto1.jpg" alt="Un recuerdo juntos">
+        <img src="foto2.jpg" alt="Un recuerdo juntos">
+        <img src="foto3.jpg" alt="Un recuerdo juntos">
+        <img src="foto4.jpg" alt="Un recuerdo juntos">
+    </div>
+
+    <p class="photo-caption">
+        Si pudiera volver a vivir estos momentos, volvería a elegirte. ♡
+    </p>
+</section>
+
+<!-- MÚSICA -->
+
+<section class="section">
+    <div class="center">
+        <h2>Nuestra Cancion</h2>
+      
+    </div>
+
+    <div class="music">
+        <div class="music-info">
+            <strong>♫ Arrullo de Estrellas</strong>
+          
+        </div>
+
+        <button id="musicButton" onclick="reproducirMusica()">
+            ▶ Reproducir
+        </button>
+    </div>
+
+    <audio id="musica" src="cancion.mp3" loop preload="auto"></audio>
+</section>
+
+<!-- ABRIR CARTA -->
+
+<section class="section center" id="inicioCarta">
+    <div class="heart">♡</div>
+
+    <h2>Hay algo que necesito decirte</h2>
+
+    <p class="description">
+        Tómate tu tiempo para leerlo.
+        No tienes que responder ahora.
+    </p>
+
+    <button onclick="abrirCarta()">
+        Leer ♡
+    </button>
+</section>
+
+<!-- CARTA COMPLETA -->
+
+<section class="section letter" id="carta">
+    <div class="center">
+        <div class="heart">♡</div>
+        <h2>Desde el fondo de mi corazon </h2>
+        
+        <div class="divider"></div>
+    </div>
+
+    <div class="letter-content" id="textoCarta"></div>
+
+    <div class="signature">
+        Te amo, Eve Bonita  ♡
+    </div>
+</section>
+
+<!-- CIERRE -->
+
+<section class="final">
+    <div class="heart">♡</div>
+
+    <h2>Quiero seguir eligiéndote.</h2>
+
+    <p>
+        No puedo cambiar lo que pasó, pero sí puedo hacerme
+        responsable de mis acciones y trabajar cada día
+        para ser una mejor persona.
+
+
+        PD: Se siente tan lindo hacer todo esto por ti jjjjj
+    </p>
+
+
+   
+</section>
+
+
+
+</div>
+
+<!-- TEXTO ORIGINAL DE LA CARTA -->
+
+<textarea id="textoOriginal" hidden>
+Hola, no sé cómo empezar, pero todo lo diré desde mi corazón y llorando.
+
+Sé que no he sido el chico perfecto o del que tú te enamoraste. Sé que he cometido tantos malditos errores, en donde cada vez todo era peor, y no trataré de justificar nada. Sé que me equivoqué, sé que a pesar de que diga lo que diga estuvo mal y, a pesar de eso, tú siempre estuviste para mí y yo seguía fallando y fallando y fallando. Y todo empezó por algo muy estúpido.
+
+Quiero pedirte perdón por no saber amarte de la forma en la que tú lo hacías. Quiero pedirte perdón por no estar para ti de la forma que debí hacerlo y quiero agradecerte por tú siempre estar para mí en cada momento.
+
+Si te soy honesto, eres lo único que tengo y aun así decidí lastimarte tanto. Sé que ahora no estamos bien porque está "él" en tu vida y sé que no estoy en el derecho de reclamarte, porque sé que me merezco sufrir esto que te hice sentir. Merezco sentir toda esta frustración de saber todas las cosas que él ha visto de ti. Y trato de no decirte nada porque sé que me lo merezco.
+
+Pero solo quiero decirte que todo esto me ha ayudado mucho a saber qué es lo que tú sentiste en su momento. Me ha ayudado a comprender la chica tan genial que siempre has sido, lo maravillosa que eres y todo lo que haces por mí. Sé que muchas veces dije que tú no hacías nada por mí, pero la realidad era muy diferente.
+
+Por eso solo quiero pedirte que me des una última oportunidad, que me elijas una última vez y permanezcas a mi lado una última vez.
+
+Prometo, y de verdad te juro, que con todo esto generé un maldito amor tan loco por ti. Te amo a cada momento, te extraño a cada momento, pienso en ti a cada momento y solo quiero que ya sea el día de verte para estar a tu lado y hacerte reír.
+
+Porque no sabes cómo me encanta tu risa, cómo me encanta cuando ves algo lindo y dices: "Ayyy, qué bonito está, tan pequeñito". No sabes cómo me encanta observarte y conocerte más, saber más de ti y darme cuenta de lo genial que eres, de lo infantil y tierno que a veces puedes ser, del buen corazón que tú tienes y de que, a pesar de todo, tú me sigues queriendo y estando para mí. Por eso es que eres tan genial.
+
+Te amo con toda mi alma y en serio te juro por tu vida que si tú confías en mí esta última vez, yo te daré todo el mundo entero. Te daré todos tus sueños que aspiras a cumplir. Sé que son muchos y me frustra no poder dártelos ahora.
+
+Solo quisiera verte feliz con tu cafetería o negocio de hobby, un hámster o rata y muchas mascotas.
+
+A pesar de todo esto, yo me sigo esforzando demasiado por ti porque quiero ser capaz de darte todo eso. Y sé que este último año fue donde ha pasado todo esto. Sé que yo ocasioné todo y no te culpo. Te perdono por todo. Jamás sacaré el tema y solo quiero volver a estar bien contigo, volver a ser solo nosotros dos.
+
+Sé que piensas que todo será mentira y que solo durará un rato y todo volverá a ser lo mismo, pero te juro que NO, te juro que sé que no será así.
+
+Todo esto me sirvió de experiencia, todo esto me sirvió para saber que te quiero a ti, que necesito a una persona tan maravillosa como tú en mi vida para ser capaz de lograr todo. Porque, joder, he logrado demasiadas cosas estando a tu lado y aunque estos últimos meses me he estancado, es porque todo está tan así, tan feo, tan raro.
+
+Por eso yo solo quisiera ser feliz nuevamente contigo, para esforzarme al triple y poder cumplir lo más rápido posible todas tus metas.
+
+Quiero que sigas viviendo con esa despreocupación por la vida. Quiero ser capaz de hacer todo por ti, quiero ser capaz de darte todo el mundo a ti y a tus seres queridos, que en este caso es tu familia.
+
+Aunque a veces digas que me cae mal tu familia, no es así. Muchas veces quisiera hacer cosas por tu mamá o por ellos, pero primero quiero arreglar todo lo nuestro. Realmente me caen bien y son tan geniales como tú.
+
+Quiero que puedas confiar una última vez en mí. Quiero que podamos perdonar todo esto que ha pasado y me dejes demostrarte que entendí lo maravillosa que puedes ser y lo mucho que este corazón siente por ti, lo loco que me vuelves, lo jodidamente loco que me vuelve pensar en ti, estar contigo y lo que debió ser desde hace mucho tiempo.
+
+Yo quiero elegirte a ti en esta vida y en todas las vidas posibles, porque te amo.
+
+Sé que tuvieron que pasar muchas cosas tan estúpidas de mi parte para darme cuenta, pero realmente te amo, realmente quiero que seas tú, realmente quiero luchar por ti hasta que mi mente esté colapsada y no pueda más, porque jamás en la vida me perdonaría si llego a perder a una chica tan genial como tú.
+
+Quiero que seas tú porque quiero construir contigo, compartir contigo y seguir descubriendo el mundo a tu lado. Hay muchas cosas tan geniales que quiero hacer contigo, que quiero practicar contigo, que quiero conocer contigo, porque tú siempre has sido mi compañera de viajes y contigo he conocido todos los lugares posibles.
+
+Quiero que siga siendo así. Quiero que sigas siendo tú.
+
+Te amo con toda mi alma, te amo con toda mi vida y te amo con todo mi corazón y todo lo que significa ser yo.
+
+Y te pido desde mi alma, desde mi ser y desde todo lo que significa existir y ser yo, toda mi vida: por favor, confía una última vez en mí y hagamos esto juntos una última vez. <3
+</textarea>
+
+<script>
+function reproducirMusica() {
+    const audio = document.getElementById("musica");
+    const boton = document.getElementById("musicButton");
+
+    if (audio.paused) {
+        audio.play().then(() => {
+            boton.textContent = "Ⅱ Pausar";
+        }).catch(() => {
+            alert("No se pudo reproducir. Revisa que cancion.mp3 esté en la carpeta correcta.");
+        });
+    } else {
+        audio.pause();
+        boton.textContent = "▶ Reproducir";
+    }
+}
+
+function abrirCarta() {
+    const carta = document.getElementById("carta");
+    const original = document.getElementById("textoOriginal").value.trim();
+
+    const parrafos = original.split(/\n\s*\n/);
+    const contenido = document.getElementById("textoCarta");
+
+    contenido.replaceChildren();
+
+    parrafos.forEach(texto => {
+        if (!texto.trim()) return;
+
+        const p = document.createElement("p");
+        p.textContent = texto.trim();
+        contenido.appendChild(p);
+    });
+
+    carta.style.display = "block";
+
+    carta.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+
+    const audio = document.getElementById("musica");
+
+    if (audio.paused) {
+        audio.play().then(() => {
+            document.getElementById("musicButton").textContent = "Ⅱ Pausar";
+        }).catch(() => {
+            // Si el navegador bloquea el audio, puede iniciarse con el botón.
+        });
+    }
+}
+</script>
+
+</body>
+</html>
